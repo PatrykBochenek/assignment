@@ -11,11 +11,11 @@ RUN npm install
 # Copy the rest of the application
 COPY . .
 
-# Build the application
-RUN npm run build
+# Set NODE_ENV to development for dev server
+ENV NODE_ENV development
 
 # Expose the port Next.js runs on
 EXPOSE 3000
 
-# Start the application
+# Use npm run dev for development
 CMD ["npm", "run", "dev"]

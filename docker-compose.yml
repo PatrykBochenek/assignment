@@ -1,4 +1,3 @@
-version: '3.8'
 
 services:
   db:
@@ -24,7 +23,6 @@ services:
       - "8000:8000"
     volumes:
       - ./backend:/app
-      - ./data:/app/data
     environment:
       - DATABASE_URL=mysql+mysqlconnector://cricket_user:cricket_password@db/cricket_db
     depends_on:
@@ -39,10 +37,10 @@ services:
       - "3000:3000"
     volumes:
       - ./frontend:/app
+      - /app/node_modules
       - /app/.next
     environment:
       - NEXT_PUBLIC_API_URL=http://localhost:8000
-    command: "npm run dev"
     depends_on:
       - backend
 
